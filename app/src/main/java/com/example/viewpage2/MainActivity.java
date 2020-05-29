@@ -2,16 +2,13 @@ package com.example.viewpage2;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
-
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
         compositePageTransformer.addTransformer(new ViewPager2.PageTransformer() {
             @Override
             public void transformPage(@NonNull View page, float position) {
-                /*float f = 1 - Math.abs(position);
-                page.setScaleY(0.85f + f * 0.15f);*/
+                float f = 1 - Math.abs(position);
+                page.setScaleY(0.85f + f * 0.15f);
             }
         });
         viewPager2.setPageTransformer(compositePageTransformer);
@@ -58,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
                 slideHandler.removeCallbacks(slideRunable);
-                slideHandler.postDelayed(slideRunable, 100);//
+                slideHandler.postDelayed(slideRunable, 700);//
             }
         });
 
